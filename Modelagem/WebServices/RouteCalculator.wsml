@@ -1,0 +1,31 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://example.com/services/RouteCalculator#"
+, 
+     graph _"http://www.example.com/ontology/GraphOntology#", 
+     discovery _"http://wiki.wsmx.org/index.php?title=DiscoveryOntology#",
+     shopping _"http://www.example.com/ontology/ShoppingOntology#",
+     shoppingProcess _"http://www.example.com/ontology/ShoppingOntologyProcess#"
+}
+
+webService RouteCalculator
+
+importsOntology
+          { _"http://www.example.com/ontology/GraphOntology#GraphOntology", 
+	    _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology",
+	    _"http://www.example.com/ontology/ShoppingOntologyProcess#ShoppingOntologyProcess"
+}
+
+capability RouteCalculatorCapability
+     nonFunctionalProperties
+          discovery#discoveryStrategy hasValue discovery#LightweightRuleDiscovery
+     endNonFunctionalProperties
+     
+     precondition RouteCalculatorPre
+	definedBy
+		?request memberOf shoppingProcess#RouteRequest.
+
+postcondition RouteCalculatorPos
+     definedBy 
+          ?resp memberOf shoppingProcess#RouteResponse.
+
+interface _"http://192.168.1.39:8080/TCC/route"

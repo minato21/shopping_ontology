@@ -1,0 +1,29 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/services/LocationSearch#"
+, 
+     graph _"http://www.example.com/ontology/GraphOntology#", 
+     discovery _"http://wiki.wsmx.org/index.php?title=DiscoveryOntology#",
+     shopping _"http://www.example.com/ontology/ShoppingOntology#",
+     shoppingProcess _"http://www.example.com/ontology/ShoppingOntologyProcess#"
+}
+
+
+webService LocationSearch
+
+     importsOntology
+          { _"http://www.example.com/ontology/GraphOntology#GraphOntology", 
+	    _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology",
+	    _"http://www.example.com/ontology/ShoppingOntologyProcess#ShoppingOntologyProcess"
+}
+
+capability LocationSearchCapability
+
+precondition LocationSearchPre
+	definedBy
+		?request memberOf shoppingProcess#SearchRequest.
+
+postcondition LocationSearchPos
+     definedBy 
+          ?resp memberOf shoppingProcess#SearchResponse.
+
+interface _"http://192.168.1.39:8080/TCC_Teste/search"
