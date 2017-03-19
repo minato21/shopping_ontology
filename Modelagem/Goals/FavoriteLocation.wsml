@@ -1,0 +1,37 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/goals/FavoriteLocation#"
+, 
+     graph _"http://www.example.com/ontology/GraphOntology#", 
+     discovery _"http://wiki.wsmx.org/index.php?title=DiscoveryOntology#",
+     shopping _"http://www.example.com/ontology/ShoppingOntology#",
+     shoppingProcess _"http://www.example.com/ontology/ShoppingOntologyProcess#"
+}
+
+
+goal FavoriteGoal
+
+    importsOntology
+          { _"http://www.example.com/ontology/GraphOntology#GraphOntology", 
+	    _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology",
+	    _"http://www.example.com/ontology/ShoppingOntologyProcess#ShoppingOntologyProcess"
+}
+
+capability favoriteCapability
+nonFunctionalProperties
+          discovery#discoveryStrategy hasValue {discovery#LightweightRuleDiscovery, discovery#NoPreFilter}
+     endNonFunctionalProperties
+postcondition favoritePos
+     definedBy 
+          ?resp memberOf shoppingProcess#FavoriteResponse.
+          
+ontology GoalRequest
+
+    importsOntology
+          { _"http://www.example.com/ontology/GraphOntology#GraphOntology", 
+	    _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology",
+	    _"http://www.example.com/ontology/ShoppingOntologyProcess#ShoppingOntologyProcess"
+}
+
+instance FavoriteRequest memberOf shoppingProcess#FavoriteRequest
+
+shoppingProcess#hasLocation hasValue shopping#Toilet1
