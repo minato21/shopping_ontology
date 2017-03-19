@@ -1,0 +1,101 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/ontology/ShoppingOntology#"
+, 
+     graph _"http://www.example.com/ontology/GraphOntology#" }
+
+ontology ShoppingOntology
+
+     importsOntology
+            _"http://www.example.com/modelagem/ontology/GraphOntology#GraphOntology"
+
+concept Shopping
+     hasLocation ofType Location
+     hasName ofType  (1 1) _string
+
+concept Location
+     hasNode impliesType  graph#Node
+     hasDescription ofType _string
+     isFavorite ofType _boolean
+
+concept Toilet subConceptOf Location
+
+concept Restaurant subConceptOf Location
+     hasFood impliesType Food
+
+concept MovieTheater subConceptOf Location
+
+concept Elevator subConceptOf Location
+
+concept Escalator subConceptOf Location
+
+concept Stairs subConceptOf Location
+
+concept Store subConceptOf Location
+     hasProduct impliesType Product
+
+concept Bank subConceptOf Location
+
+concept Food
+
+concept Product
+
+instance Pizza memberOf Food
+
+instance Pasta memberOf Food
+
+instance AsianFood memberOf Food
+
+instance Vegan memberOf Food
+
+instance Burger memberOf Food
+
+instance MaleClothing memberOf Product
+
+instance FemaleClothing memberOf Product
+
+instance Shoes memberOf Product
+
+instance Electronics memberOf Product
+
+instance Books memberOf Product
+
+instance Toys memberOf Product
+
+instance Toilet1 memberOf Toilet
+     hasNode hasValue graph#N1
+     hasDescription hasValue "Toilet."
+     isFavorite hasValue _boolean("false")
+
+instance FilmTheater memberOf MovieTheater
+     hasNode hasValue graph#N3
+     hasDescription hasValue "Film Mark, movie theater."
+      isFavorite hasValue _boolean("false")
+
+instance ItalianRestaurant memberOf Restaurant
+     hasNode hasValue graph#N2
+     hasFood hasValue {Pizza, Pasta, Vegan }
+     hasDescription hasValue "Saizeriya, italian food."
+     isFavorite hasValue _boolean("false")
+
+instance FastFoodRestaurant memberOf Restaurant
+     hasNode hasValue graph#N4
+     hasFood hasValue Burger
+     hasDescription hasValue "Mos Burguer, hamburgers."
+     isFavorite hasValue _boolean("false")
+
+instance ClothesStore memberOf Store
+     hasNode hasValue graph#N5
+     hasProduct hasValue {MaleClothing, FemaleClothing, Shoes }
+     hasDescription hasValue "Croco Fur, clothing."
+     isFavorite hasValue _boolean("false")
+
+instance BookStore memberOf Store
+     hasNode hasValue graph#N6
+     hasProduct hasValue Books
+     hasDescription hasValue "Book On, book store."
+     isFavorite hasValue _boolean("false")
+
+instance ShoppingTest memberOf Shopping
+     hasName hasValue "shopping1"
+     hasLocation hasValue {Saizeriya, FilmMark, BookOn, MosBurger, Toilet1, CrocoFur }
+     
