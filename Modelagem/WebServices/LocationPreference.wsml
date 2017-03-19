@@ -1,0 +1,29 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/services/LocationPreference#"
+, 
+     graph _"http://www.example.com/ontology/GraphOntology#", 
+     discovery _"http://wiki.wsmx.org/index.php?title=DiscoveryOntology#",
+     shopping _"http://www.example.com/ontology/ShoppingOntology#",
+     shoppingProcess _"http://www.example.com/ontology/ShoppingOntologyProcess#"
+}
+
+
+webService LocationPreference
+
+     importsOntology
+          { _"http://www.example.com/ontology/GraphOntology#GraphOntology", 
+	    _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology",
+	    _"http://www.example.com/ontology/ShoppingOntologyProcess#ShoppingOntologyProcess"
+}
+
+capability LocationPreferenceCapability
+
+precondition LocationPreferencePre
+	definedBy
+		?request memberOf shoppingProcess#FavoriteRequest.
+
+postcondition LocationPreferencePos
+     definedBy 
+          ?resp memberOf shoppingProcess#FavoriteResponse.
+
+interface _"http://192.168.1.39:8080/TCC_Teste/favorite"
