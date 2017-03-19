@@ -1,0 +1,168 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/ontology/GraphOntology#"
+ }
+
+ontology GraphOntology
+
+concept Graph
+     hasNode impliesType Node
+     hasEdge impliesType Edge
+
+concept Node
+     hasId impliesType (1 1)_integer
+
+concept Edge
+     //hasNode impliesType Node
+     hasWeight impliesType (1 1) _double
+     hasDescription ofType  (1 1) _string
+     hasStartingNode ofType (1 1) Node
+     hasEndingNode ofType  (1 1) Node
+
+instance N1 memberOf Node
+     hasId hasValue 1
+
+instance N2 memberOf Node
+     hasId hasValue 2
+
+instance N3 memberOf Node
+     hasId hasValue 3
+
+instance N4 memberOf Node
+     hasId hasValue 4
+
+instance N5 memberOf Node
+     hasId hasValue 5
+
+instance N6 memberOf Node
+     hasId hasValue 6
+
+instance Exemplo memberOf Graph
+     hasEdge hasValue {a12, a13, a14, a16, a21, a23, a31, a32, a34, a41, a43, a45, a46, a54, a56, a61, a64, a65 }
+     hasNode hasValue {N1, N2, N3, N4, N5, N6 }
+
+instance a12 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N1
+     hasEndingNode hasValue N2
+     
+     hasDescription hasValue "Go east, walk 10 meters, turn left, walk 10 meters."
+
+instance a13 memberOf Edge
+     hasWeight hasValue _double("1")
+     hasStartingNode hasValue N1
+     hasEndingNode hasValue N3
+     
+     hasDescription hasValue "Go north, walk 10 meters."
+
+instance a14 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N1
+     hasEndingNode hasValue N4
+
+	hasDescription hasValue "Go west, walk 20 meters."
+
+instance a16 memberOf Edge
+     hasWeight hasValue _double("5")
+     hasStartingNode hasValue N1
+     hasEndingNode hasValue N6
+     
+     hasDescription hasValue "Go south, walk 25 meters, turn right, walk 25 meters."
+
+instance a21 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N2
+     hasEndingNode hasValue N1
+     
+     hasDescription hasValue "Go south, walk 10 meters, turn right, walk 10 meters."
+
+instance a23 memberOf Edge
+     hasWeight hasValue _double("3")
+     hasStartingNode hasValue N2
+     hasEndingNode hasValue N3
+     
+     hasDescription hasValue "Go north, walk 15 meters, turn left, walk 15 meters."
+
+instance a31 memberOf Edge
+     hasWeight hasValue _double("1")
+     hasStartingNode hasValue N3
+     hasEndingNode hasValue N1
+     
+     hasDescription hasValue "Go south, walk 10 meters."
+
+instance a32 memberOf Edge
+     hasWeight hasValue _double("3")
+     hasStartingNode hasValue N3
+     hasEndingNode hasValue N2
+     
+     hasDescription hasValue "Go east, walk 15 meters, turn right, walk 15 meters."
+
+instance a34 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N3
+     hasEndingNode hasValue N4
+     
+     hasDescription hasValue "Go west, walk 10 meters, turn left, walk 10 meters."
+
+instance a41 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N4
+     hasEndingNode hasValue N1
+     
+     hasDescription hasValue "Go east, walk 20 meters."
+
+instance a43 memberOf Edge
+     hasWeight hasValue _double("2")
+     hasStartingNode hasValue N4
+     hasEndingNode hasValue N3
+     
+     hasDescription hasValue "Go north, walk 10 meters, turn right, walk 10 meters."
+
+instance a45 memberOf Edge
+     hasWeight hasValue _double("5")
+     hasStartingNode hasValue N4
+     hasEndingNode hasValue N5
+     
+     hasDescription hasValue "Go west, walk 25 meters, turn left, walk 25 meters."
+
+instance a46 memberOf Edge
+     hasWeight hasValue _double("1")
+     hasStartingNode hasValue N4
+     hasEndingNode hasValue N6
+     
+     hasDescription hasValue "Go south, walk 10 meters."
+
+instance a54 memberOf Edge
+     hasWeight hasValue _double("5")
+     hasStartingNode hasValue N5
+     hasEndingNode hasValue N4
+     
+     hasDescription hasValue "Go north, walk 25 meters, turn right, walk 25 meters."
+
+instance a56 memberOf Edge
+     hasWeight hasValue _double("4")
+     hasStartingNode hasValue N5
+     hasEndingNode hasValue N6
+     
+     hasDescription hasValue "Go south, walk 20 meters, turn left, walk 20 meters."
+
+instance a61 memberOf Edge
+     hasWeight hasValue _double("5")
+     hasStartingNode hasValue N6
+     hasEndingNode hasValue N1
+     
+     hasDescription hasValue "Go east, walk 25 meters, turn left, walk 25 meters."
+
+instance a64 memberOf Edge
+     hasWeight hasValue _double("1")
+     hasStartingNode hasValue N6
+     hasEndingNode hasValue N4
+     
+     hasDescription hasValue "Go north, walk 10 meters."
+
+instance a65 memberOf Edge
+     hasWeight hasValue _double("4")
+     hasStartingNode hasValue N6
+     hasEndingNode hasValue N5
+
+     hasDescription hasValue "Go west, walk 20 meters, turn right, walk 20 meters."
+     

@@ -1,0 +1,32 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+namespace { _"http://www.example.com/ontology/ShoppingOntologyProcess#"
+ }
+
+ontology ShoppingOntologyProcess
+
+     importsOntology
+            _"http://www.example.com/ontology/ShoppingOntology#ShoppingOntology"
+
+concept ShoppingRequest
+
+concept SearchRequest
+     hasLocation ofType  (1 1) _"http://www.example.com/ontology/ShoppingOntology#Location"
+     
+concept FavoriteRequest
+     hasLocation ofType  (1 1) _"http://www.example.com/ontology/ShoppingOntology#Location"
+     isFavorite ofType (1 1) _boolean
+     
+concept RouteRequest
+	hasStartingNode ofType (1 1) _"http://www.example.com/ontology/GraphOntology#Node"
+	hasEndingNode ofType (1 1) _"http://www.example.com/ontology/GraphOntology#Node"
+
+concept ShoppingResponse
+
+concept SearchResponse
+     hasLocation ofType _"http://www.example.com/ontology/ShoppingOntology#Location"
+     
+concept FavoriteResponse
+     hasLocation ofType _"http://www.example.com/ontology/ShoppingOntology#Location"
+     
+concept RouteResponse
+	hasEdge ofType _"http://www.example.com/ontology/GraphOntology#Edge"
